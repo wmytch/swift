@@ -1,0 +1,31 @@
+
+                "obj_forum":1,  //self.obj_forum,
+                "id_thread_message": 2,  // 主贴ID 如果自己是主贴就是重合的
+                "id_message": 3,  // 本条消息ID 如果刚好就是主贴 则和 主贴ID 一样
+                "id_father_message": 4,  // 父节点的ID 可能是 主贴也可能是 回帖 因为统一结构了
+                "is_main_thread": 5,
+                "title_message": 6,
+                "length_message": 7,  // 内容的字节数
+                "id_emojo_message": 8,
+                "emojo_path_message": 9,
+                "ip_submit_mesage": 10,
+                "status_message": 11,  // 状态 主贴和回帖一样的定义规范
+                "submit_time": 12,
+                "modify_time": 13,
+                "memo_message": 14,
+                "reward_message": 15,  // 主贴才有的奖章项目
+                "count_reply": 16,  // 回复的数量 只有主贴有此项
+                "name_poster_message": 17,  // 提交人
+                "id_poster_message": 18,  // 提交人
+                //"poster_message_signature": self.poster_message_signature,  // 提交人签名
+                "browse_count_message": 19,  // 被单独浏览的次数
+                "lastreply_time": 20,  // 最后回复时间
+                "is_star":21,
+                "is_top": 22,
+                "has_a_tag":23, // 标志是否有A标签
+                "has_img_tag":24,  // 标记是否有img标签
+                "related_tags": 25,  // 相关标签
+                "child_msgs": unzip_compact_msgs(26)  // 回帖列表
+        }
+
+

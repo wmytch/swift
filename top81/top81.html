@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+        <title>[军事天地]--第三鼎盛</title>
+        
+        <link rel="stylesheet" href="/static/css/style.css"/>
+         <link rel="stylesheet" href="/static/css/pickup_forum.css"/>
+        <link rel="stylesheet" href="/static/css/font-awesome.css"/>
+        <!-- <link rel="stylesheet" href="/static/css/bootstrap.css"> -->
+        <link rel="stylesheet" href="http://apps.bdimg.com/libs/bootstrap/3.3.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="/static/css/f-bootstrap.css">
+        <link rel="stylesheet" href="/static/css/f-pagination.css">
+    </head>
+<body class="forum-body" onload="init_page()" >
+
+<script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+<script type="text/javascript" src="http://apps.bdimg.com/libs/jquery.cookie/1.4.1/jquery.cookie.js"></script>
+<script type="text/javascript" src="/static/js/common/forum_header.js"></script>
+
+<div id="header" style="text-align: center;margin-top:5px;width:100%;position: relative;">
+    <div style="position:absolute;float:left;z-index: 100;left:0px;top:0px;">
+        <input id="btn_switch_to_desktop" type="button" class="btn btn-xs btn-link" style="display: none;float: left;padding: 0px;margin-top: 0px;" onclick="switch_prefer_agent(0)" value="[切换到PC模式]"  />
+        <input id="btn_switch_to_mobile"  type="button" class="btn btn-xs btn-link" style="display: none;float: left;padding: 0px;margin-top: 0px;" onclick="switch_prefer_agent(1)" value="[切换到手机模式]"  />
+        <br/>
+        <img src="/static/image/help.png"
+             title="页面快捷键帮助"
+             data-container="body" data-placement="bottom"
+             style="width: 15px;height: 15px;float:left;margin-top: 3px;"
+             data-toggle="modal" data-target="#tipModal"
+        />
+
+        <div class="modal fade" id="tipModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title" id="myModalLabel">
+                            页面快捷键 tip
+                        </h4>
+                    </div>
+                    <div class="modal-body" style="text-align: left;">
+                        <span style="float:left;color: #cc0000;">所有快捷键不区分大小写</span><br/>
+                        <span style="float:left;color: #000088;font-weight: bold;">普通列表页</span><br/>
+                        <span style="float:left;">1: <h style="color:orange;">R</h> 键  刷新页面内容(Refreshing)</span><br/>
+                        <span style="float:left;">2: <h style="color:orange;"><</h> 键  上一页</span><br/>
+                        <span style="float:left;">3: <h style="color:orange;">></h> 键  下一页</span><br/>
+                        <span style="float:left;">4: <h style="color:orange;">F</h> 键  第一页(First Page)</span><br/>
+                        <span style="float:left;">5: <h style="color:orange;">L</h> 键  最后一页 (Last Page)</span><br/>
+                        <span style="float:left;">6: <h style="color:orange;">N</h> 键  发表新主题 (New Thread)</span><br/>
+                        <span style="float:left;">7: <h style="color:orange;">M</h> 键  查看我的消息 (Message)</span><br/>
+                        <span style="float:left;">8: <h style="color:orange;">数字(1-8)</h> 键 按头部顺序 跳转到相应板块</span><br/>
+
+                        <br/>
+                        <span style="float:left;color: #000088;font-weight: bold;">精华列表页 </span><br/>
+                        <span style="float:left;">1: <h style="color:orange;">R</h> 键  刷新页面内容(Refreshing)</span><br/>
+                        <span style="float:left;">2: <h style="color:orange;"><</h> 键  上一页</span><br/>
+                        <span style="float:left;">3: <h style="color:orange;">></h> 键  下一页</span><br/>
+                        <span style="float:left;">4: <h style="color:orange;">F</h> 键  第一页(First Page)</span><br/>
+                        <span style="float:left;">5: <h style="color:orange;">L</h> 键  最后一页 (Last Page)</span><br/>
+                        <span style="float:left;">6: <h style="color:orange;">N</h> 键  发表新主题 (New Thread)</span><br/>
+                        <span style="float:left;">7: <h style="color:orange;">M</h> 键  查看我的消息 (Message)</span><br/>
+                        <span style="float:left;">8: <h style="color:orange;">数字(1-8)</h> 键 按头部顺序 跳转到相应板块的精华区</span><br/>
+
+                        <br/>
+                        <span style="float:left;color: #000088;font-weight: bold;">主题显示页 </span><br/>
+                        <span style="float:left;">1: <h style="color:orange;">R</h> 键  刷新页面内容(Refreshing)</span><br/>
+                        <span style="float:left;">2: <h style="color:orange;">N</h> 键  发表新主题 (New Thread)</span><br/>
+                        <span style="float:left;">3: <h style="color:orange;">M</h> 键  查看我的消息 (Message)</span><br/>
+                    </div>
+                </div><!-- /.modal-content -->
+            </div><!-- /.modal -->
+        </div>
+    </div>
+    <div class="" style="">
+        
+            <a  id="forum_top_link_1" href="/list/1" class="btn  head-link"  >军事天地</a>
+        
+            <a  id="forum_top_link_2" href="/list/2" class="btn  head-link"  >天下书屋</a>
+        
+            <a  id="forum_top_link_3" href="/list/3" class="btn  head-link"  >原创精华</a>
+        
+            <a  id="forum_top_link_6" href="/list/6" class="btn  head-link"  >鼎盛茶馆</a>
+        
+            <a  id="forum_top_link_7" href="/list/7" class="btn  head-link"  >共济共盛</a>
+        
+            <a  id="forum_top_link_8" href="/list/8" class="btn  head-link"  >调剂置换</a>
+        
+            <a  id="forum_top_link_5" href="/list/5" class="btn  head-link"  >站务申诉</a>
+        
+            <a  id="forum_top_link_4" href="/list/4" class="btn  head-link"  >水贴回收</a>
+        
+   </div>
+    <div style="position:absolute;float: right;z-index: 100;right:0px;top:0px;">
+        
+            <div style="float:right"><input type="button" class="btn btn-xs f-btn-user" style="margin-left: 0px;" onclick="window.location='/login/'" value="登录"/></div>
+        
+        <div style="float:right">
+            <input type="button" class="btn btn-xs f-btn-user" style="margin-left: 5px;margin-right:5px;" onclick="window.location='/register/'" value="注册"/>
+        </div>
+        
+                <input type="hidden" id="IS_MANAGER_HV" value="false" />
+        
+    </div>
+</div>
+<div  style="width:100%;margin:0px auto;text-align:center;margin-bottom: 5px;" ><img  title="第三鼎盛" src="/static/image/title.png"></div>
+    <script>
+        //为了给其他JS 准备论坛数据公用数据
+        var ACTIVE_FORUM_ID_LIST=[
+        
+            1,
+        
+            2,
+        
+            3,
+        
+            6,
+        
+            7,
+        
+            8,
+        
+            5,
+        
+            4,
+        
+                        ]
+        //ACTIVE_FORUM_ID_LIST.length=ACTIVE_FORUM_ID_LIST.length-1
+        var ACTIVE_FORUM_NAME_LIST=[
+        
+            '军事天地',
+        
+            '天下书屋',
+        
+            '原创精华',
+        
+            '鼎盛茶馆',
+        
+            '共济共盛',
+        
+            '调剂置换',
+        
+            '站务申诉',
+        
+            '水贴回收',
+        
+                        ];
+        var BLOCKED_USER_LIST=[
+            
+        ];
+        function is_user_blocked(user_id){
+            for(bi=0;bi<BLOCKED_USER_LIST.length;bi++){
+                if(BLOCKED_USER_LIST[bi][0]==user_id){
+                    return true;
+                }
+            }
+            return false;
+        }
+        //ACTIVE_FORUM_NAME_LIST.length=ACTIVE_FORUM_NAME_LIST.length-1
+        switch_prefer_agent_apperence()
+        init_manage_mode()
+        //读取用户是否有私信
+        function do_i_have_msg(){
+            http.get('/count_unread_msgs_ajax/?r='+Math.random(),
+                function (err,result){
+                    if(result && result.AJAX_RESULT){
+                        if(result.unread_msg_count>0){
+                            $("#img_has_msgs_arrived").css('display','')
+                            $("#img_has_msgs_arrived").attr('title','你有'+result.unread_msg_count+'条未读消息！点击查看')
+                        }else{
+                            $("#img_has_msgs_arrived").css('display','none')
+                            $("#img_has_msgs_arrived").attr('title','您当前没有未读消息！')
+                        }
+                    }
+            }
+            );
+        }
+        //当前是在某个板块的区域内
+        function mark_forum(forum_id){
+            $('#forum_top_link_'+forum_id).addClass('head-link-s')
+            //$('#forum_top_icon_'+forum_id).css('display','')
+        }
+        
+        $(function (){
+            $("[data-toggle='popover']").popover();
+        });
+    </script>
+
+    <!--
+    <div style="width:100%;text-align:center;margin-bottom:5px;"><img align="center" style="margin: 0px auto;" src="/static/forum/forum_1.png" /></div>
+     -->
+
+     <div name="page_flip" style="text-align:left;" >
+         <div id="left_page_flip_t" class="btn-group-xs" style="float:left;">
+            <input type="button" onclick="window.open('/post_new_thread/1/')" class="btn f-btn-danger" style="float:left;"  value="发&nbsp;贴" />
+            <input type="button" onclick="refreshThreadListFo()" class="btn f-btn-normal" style="float:left;font-weight: bold;"  value="刷&nbsp;新" />
+            <input id='btn_reply_first_t' type="button" onclick="switch_order('reply')" class="btn f-btn-normal " style="float:left;font-weight: bold;display:none;"  value="回贴顺序" />
+            <input id='btn_post_first_t' type="button" onclick="switch_order('post')" class="btn f-btn-normal " style="float:left;font-weight: bold;display:none;"  value="首贴顺序" />
+            <input type="button" onclick="fold_reply()" id="btn_fold_reply_t" class="btn f-btn-normal " style="float:left;font-weight: bold;display:none;"  value="收起回帖" />
+            <input type="button" onclick="unfold_reply()" id="btn_unfold_reply_t" class="btn f-btn-normal" style="float:left;font-weight: bold;display:none;"  value="展开回帖" />
+            <input type="button" onclick="window.open('/slist/1/')" class="btn f-btn-normal " style="float:left;font-weight: bold;"  value="精华" />
+         </div>
+        <div id="DIV_TAG_LIST_T" style="float: left;margin-top:3px;margin-left:2px;font-size: 12px;">
+        </div>
+         <div id="right_page_flip_t" style="float:right;">
+            <div class="dropdown btn-group-xs" style="float:right;">
+                <input onclick="goto_page('top_page_indicator')" class="btn f-btn-danger " type="button"  style="float:right;" value="跳转"  />
+                <input id="top_page_indicator" class="form-control" type="text" title="共页，跳转不能超过页数"  style="float:right;height:21px;width:60px;padding-left:2px;padding-right: 2px;color:#dddddd;font-size:12px;"  placeholder="目标页"  />
+                 <button type="button" class="btn  f-btn-normal dropdown-toggle" data-toggle="dropdown" style="margin-left:0px;margin-bottom: 4px;">
+                     <span id="span_page_size_t">20</span>条/页<span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu" role="menu" style="background-color: #fff2dd;min-width:100px;" >
+                    <li style="list-style:none;"><span style="margin-left: 5px;padding: 1px 3px 1px 3px;" class="btn btn-link" onclick="change_page_size(10);" >10条/页</span></li>
+                    <li style="list-style:none;"><span style="margin-left: 5px;padding: 1px 3px 1px 3px;" class="btn btn-link"  onclick="change_page_size(20);"  >20条/页</span></li>
+                    <li style="list-style:none;"><span style="margin-left: 5px;padding: 1px 3px 1px 3px;" class="btn btn-link"  onclick="change_page_size(50);"  >50条/页</span></li>
+                    <li style="list-style:none;"><span style="margin-left: 5px;padding: 1px 3px 1px 3px;" class="btn btn-link"  onclick="change_page_size(100);" >100条/页</span></li>
+                </ul>
+            </div>
+            <ul id="page_roller_t" style="margin: 0px;float:right;padding: 0px;"></ul>
+         </div>
+         <div class="clearfloat"></div>
+        <div id="DIV_TAG_LIST_T_S" style="float: left;font-size: 12px;">
+        </div>
+         <div class="clearfloat"></div>
+    </div>
+    <div id='Thread_List_Frame' style='width:100%;border:solid rgba(100,100,100,0.1) 1px;border-bottom:none;min-height: 500px;' class='container l-top_round r-top_round' ng-app='list_forum_threads_app' ng-controller='list_forum_threas_ctrl'></div>
+    <div class="clearfloat"></div>
+    <div class='container r-bottom_round l-bottom_round' style="width:100%;text-align:center;border:solid rgba(100,100,100,0.1) 1px;border-top: none;padding: 0px;">
+        <img style="float: left;"  width="23" height="25px" onclick="javascript:window.scrollTo( 0, 0 );" src="/static/image/go-top-big.png" />
+        <img width="23" height="25px" onclick="javascript:window.scrollTo( 0, 0 );" src="/static/image/go-top-big.png" />
+        <img style="float: right" width="23" height="25px" onclick="javascript:window.scrollTo( 0, 0 );" src="/static/image/go-top-big.png" />
+        <div class="clearfloat"></div>
+    </div>
+    <div class="clearfloat"></div>
+    <div id="DIV_TAG_LIST_B_S" style="float: left;margin-top:0px;margin-left: 2px;font-size: 12px;">
+    </div>
+    <div class="clearfloat"></div>
+    <div name="page_flip" style="text-align:left;margin-top:5px;min-height:25px;">
+        <div id="left_page_flip_b"  class="btn-group-xs" style="margin: 0px;">
+            <input type="button" onclick="window.open('/post_new_thread/1/')" class="btn f-btn-danger" style="float:left;"  value="发&nbsp;贴" />
+            <input type="button" onclick="refreshThreadListFo()" class="btn f-btn-normal" style="float:left;font-weight: bold;"  value="刷&nbsp;新" />
+            <input id="btn_reply_first_b" type="button" onclick="switch_order('reply')" class="btn f-btn-normal " style="float:left;font-weight: bold;"  value="回贴顺序" />
+            <input id="btn_post_first_b" type="button" onclick="switch_order('post')" class="btn f-btn-normal btn-xs" style="float:left;font-weight: bold;"  value="首贴顺序" />
+            <input type="button" onclick="fold_reply()" id="btn_fold_reply_b" class="btn f-btn-normal" style="float:left;font-weight: bold;"  value="收起回帖" />
+            <input type="button" onclick="unfold_reply()" id="btn_unfold_reply_b" class="btn f-btn-normal " style="float:left;font-weight: bold;"  value="展开回帖" />
+            <input type="button" onclick="window.open('/slist/1/')" class="btn f-btn-normal" style="float:left;font-weight: bold;"  value="精华" />
+        </div>
+        <div id="DIV_TAG_LIST_B" style="float: left;margin-top:0px;margin-left: 2px;font-size: 12px;">
+        </div>
+        <div id="right_page_flip_b" style="float:right;margin: 0px;">
+            <div class="dropdown btn-group-xs dropup" style="float:right;">
+                <input onclick="goto_page('bottom_page_indicator')" class="btn f-btn-danger " type="button"  style="float:right;" value="跳转"  />
+                <input id="bottom_page_indicator" class="form-control" type="text" title="共页，跳转不能超过页数"  style="float:right;height:21px;width:60px;padding-left:2px;padding-right: 2px;color:#dddddd;font-size:12px;"  placeholder="目标页"  />
+                 <button type="button" class="btn  f-btn-normal dropdown-toggle" data-toggle="dropdown" style="margin-left:0px;margin-bottom: 4px;">
+                    <span id="span_page_size_b">20</span>条/页<span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu" role="menu" style="background-color: #fff2dd;min-width: 100px;" >
+                    <li style="list-style:none;"><span style="margin-left: 5px;padding: 1px 3px 1px 3px;" class="btn btn-link"  onclick="change_page_size(10);" >10条/页</span></li>
+                    <li style="list-style:none;"><span style="margin-left: 5px;padding: 1px 3px 1px 3px;" class="btn btn-link"  onclick="change_page_size(20);"  >20条/页</span></li>
+                    <li style="list-style:none;"><span style="margin-left: 5px;padding: 1px 3px 1px 3px;" class="btn btn-link"  onclick="change_page_size(50);"  >50条/页</span></li>
+                    <li style="list-style:none;"><span style="margin-left: 5px;padding: 1px 3px 1px 3px;" class="btn btn-link"  onclick="change_page_size(100);" >100条/页</span></li>
+                </ul>
+            </div>
+            <ul id="page_roller_b" style="float:right;padding: 0px;margin: 0px;"></ul>
+        </div>
+        <div class="clearfloat"></div>
+    </div>
+
+<div id="footer" align="center" style="width:100%;min-height:30px;padding-top:5px;margin-bottom:20px;">
+    <div style="width:100%;min-height:20px;padding: 0px;text-align: center;">
+        <span><img style="" title="第三鼎盛" style="" src="/static/image/title.png" /></span>
+    </div>
+    <div style="width:100%;min-height: 20px;">
+        <input type="button" style="float:left;padding: 0px;margin-right: 5px;" title="刀手操作记录" class="btn btn-link btn-xs" value="记录" onclick="window.open('/show_op_tracks/1/')" />
+        <input type="button" style="float:left;padding: 0px;margin-right: 5px;" title="在线用户查看" class="btn btn-link btn-xs" value="在线" onclick="window.open('/show_alive_users/')" />
+        <input type="button" style="float:left;padding: 0px;margin-right: 5px;" title="全文搜索论坛" class="btn btn-link btn-xs" value="搜索" onclick="window.open('/show_search_page/')" />
+        <!--
+        <a href="onlineuser.php">在线</a>
+        <a href="rank.php?f=<?=$fid?>">排行</a>
+        <a href="ft/search.cgi">搜索</a>
+        <a href="mods.php">刀手</a>
+        -->
+            <div style="float:right" >
+            <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1272023827'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s13.cnzz.com/z_stat.php%3Fid%3D1272023827%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));</script>
+            </div>
+            <input type="button" style="float:right" class="btn btn-link btn-xs" value="鼎盛王朝" onclick="window.open('http://www.dser.com/forum.php?mod=forumdisplay&amp;fid=474')" />
+            <input type="button" style="float:right" class="btn btn-link btn-xs" value="鼎盛中华" onclick="window.open('https://dszh.org/list.php?f=1&p=1')" />
+    </div>
+</div>
+<div style="width: 100%;">
+        <span style="font-size:9px;">
+            <table id="speed_monitoring_tbl" style="display: none;">
+                <tr><td>刷新耗时:</td></tr>
+                <tr><td>开始时间:[<span id="submit_time"></span>]</td></tr>
+                <tr><td>收到数据:[<span id="receive_time"></span>]</td></tr>
+                <tr><td>显示完成:[<span id="done_time"></span>]</td></tr>
+                <tr><td>服务器耗时秒:[<span id="server_time"></span>]</td></tr>
+            </table>
+        </span>
+</div>
+
+
+
+<input type="hidden" id="Forum_Id" value="1"/>
+<input type="hidden" id="Target_Tag_Id" value="0" />
+<input type="hidden" id="Max_Page_Num" value="1" />
+<input type="hidden" id="Page_Num" value="1" />
+<input type="hidden" id="Page_Size" value="20" />
+<input type="hidden" id="OCN" value="reply" />
+
+<div style="width: 100%;color: red;margin: 0px auto;" id="Error_Msg"></div>
+</body>
+     
+    <!--
+    <script type="text/javascript" src="/static/js/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="/static/js/jquery.cookie.js"></script>
+    <script type="text/javascript" src="/static/js/angular.min.js"></script>
+    <script type="text/javascript" src="/static/js/bootstrap.min.js"></script>
+       -->
+    <script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script type="text/javascript" src="http://apps.bdimg.com/libs/jquery.cookie/1.4.1/jquery.cookie.js"></script>
+    <script type="text/javascript" src="http://apps.bdimg.com/libs/angular.js/1.4.6/angular.min.js"></script>
+    <script type="text/javascript" src="http://apps.bdimg.com/libs/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+
+    <script type="text/javascript" src="/static/js/f-bootstrap-paginator.js"></script>
+    <script type="text/javascript" src="/static/js/NirvanaHttp.js"></script>
+    <script type="text/javascript" src="/static/js/util/mask.js"></script>
+    <script type="text/javascript" src="/static/js/util/forum_util.js"></script>
+    <script type="text/javascript" src="/static/js/util/util.js"></script>
+    <script type="text/javascript" src="/static/js/admin/forum_thread_admin.js"></script>
+    <script type="text/javascript" src="/static/js/admin/user_admin_ajax.js"></script>
+    <script type="text/javascript" src="/static/js/forum/show_threads.js"></script>
+    <script type="text/javascript" src="/static/js/forum/unzip_threads_util.js"></script>
+    <script type="text/javascript" src="/static/js/thread/thread_tree_gen_util.js"></script>
+    <script type="text/javascript" src="/static/js/util/mask.js"></script>
+    <script>
+        $(function() {
+             var $r_t_inp = $('body');
+             $r_t_inp.bind('keydown', function (e) {
+                 var key = e.which;
+                 /*
+                 f:70 r:82
+                 < :188 >:190
+                 n:78
+                   1:49 0:48 9:57
+                  */
+                 //console.log(key)
+                 if(e.target.tagName!="INPUT"){
+                    switch(key){
+                        case 82:{ //R  刷新页面
+                            refresh_url_hash();
+                            return;
+                        }
+                        case 70:{ //F 到首页
+                            $('#Page_Num').val(1)
+                            refresh_url_hash();
+                            return;
+                        }
+                        case 76:{ //L 到最后一页
+                            $('#Page_Num').val($('#Max_Page_Num').val())
+                            refresh_url_hash();
+                            return;
+                        }
+                        case 77:{ //M 查看消息
+                            window.open('/show_my_message_page/')
+                            return;
+                        }
+                        case 78:{ //N 发帖
+                            window.open('/post_new_thread/1/')
+                            return;
+                        }
+                        case 188:{
+                            chang_page_num(-1)
+                            refresh_url_hash();
+                            return;
+                        }
+                        case 190:{
+                            chang_page_num(1)
+                            refresh_url_hash();
+                            return;
+                        }
+                    }
+                    if(key>=49 && key<=56){
+                            var forum_id = ACTIVE_FORUM_ID_LIST[(key-49)]
+                            window.location="/list/"+forum_id+"/"
+                            return
+                    }
+                 }
+             });
+        });
+        function init_page() {
+            //根据URL的hashtag 初始化个 option value
+            var init_hash_tag=$.trim(window.location.hash.replace("#",''))
+            if(init_hash_tag.length>0){
+                //var new_option=$('#Target_Tag_Id').val()+"_"+$.cookie('THREAD_LIST_ORDER')+"_"+$('#Page_Size').val()+"_"+$('#Page_Num').val()
+                url_options=init_hash_tag.split('_')
+                $('#Target_Tag_Id').val(url_options[0])
+                $('#OCN').val(url_options[1])
+                $('#Page_Size').val(url_options[2])
+                $('#span_page_size_t').html(url_options[2])
+                $('#span_page_size_b').html(url_options[2])
+                $('#Page_Num').val(url_options[3])
+                $.cookie('THREAD_LIST_ORDER',url_options[1],{path:'/',expires:7})
+            }
+            redraw_option_btns();
+            init_tag_div("T")
+            init_tag_div("B")
+            if($('#Target_Tag_Id').val()>0){
+                switch_target_tag($('#Target_Tag_Id').val())
+            }else{
+                refresh_url_hash()
+            }
+            mark_forum($('#Forum_Id').val());
+            //因为第一个元素是时间所以要先处理掉
+            //show_datas_on_page(init_threads_dict);
+            //refreshThreadList();
+        };
+
+        var tag_attr_list=[
+            
+                    [1,'军事','#006000','#eeffee'],
+            
+                    [2,'西藏','#600060','#ffeeff'],
+            
+                    [3,'社会','#006060','#eeffff'],
+            
+                    [4,'经济','#600000','#ffeeee'],
+            
+                    [5,'事件','#000060','#eeeeff'],
+            
+                    [6,'历史','#606000','#ffffee'],
+            
+                    [7,'科技','#006000','#eeffee'],
+            
+                    [8,'台湾','#000060','#eeeeff'],
+            
+                    [9,'求助','#606000','#ffffee'],
+            
+                    [10,'体育','#006060','#eeffff'],
+            
+                    [11,'地震','#600060','#ffeeff'],
+            
+                    [12,'置换','#600000','#eeeeff'],
+            
+                    [13,'促销','#606000','#eeffff'],
+            
+        ]
+        var pageRollerOption={
+                    bootstrapMajorVersion: 3, //版本
+                    totalPages: 1, //总页数
+                    numberOfPages: 5,
+                    shouldShowPage:true,//是否显示该按钮
+                    size:'mini',
+                    onPageClicked: function (event, originalEvent, type, page) {
+                        if($("#Page_Num").val()!=page){
+                            $("#Page_Num").val(page)
+                            refresh_url_hash()
+                        }
+                    },
+                    itemTexts: function (type, page, current) {
+                        switch (type) {
+                            case "first": return "首页";
+                            case "prev": return "上页";
+                            case "next": return "下页";
+                            case "last": return "末页";
+                            case "page": return page;
+                        }
+                    }//点击事件，用于通过Ajax来刷新整个list列表
+        }
+        function init_tag_div(div_tag){
+            var ti=0;
+            var tag_list_ctt="标签:"
+            for(ti=0;ti<tag_attr_list.length;ti++){
+                t_title="点击只看["+tag_attr_list[ti][1]+"]相关主题"
+                t_style="color:"+tag_attr_list[ti][2]+";background:"+tag_attr_list[ti][3]+";border:dashed 1px #006000;padding:1px 2px 1px 3px;margin-left:2px;font-size:11px; "
+                tag_list_ctt+="<span id='Tag_span_"+tag_attr_list[ti][0]+"_"+div_tag+"' title='"+t_title+"' onclick='switch_target_tag("+tag_attr_list[ti][0]+")' class='top_round bottom_round' style='"+t_style+"' >"
+                tag_list_ctt+=tag_attr_list[ti][1]
+                tag_list_ctt+="</span>"
+            }
+            $('#DIV_TAG_LIST_'+div_tag).html(tag_list_ctt);
+        }
+        function redraw_option_btns(){
+            if ($.cookie('FOLD_THREAD_REPLY')=='true'){
+                $('#btn_fold_reply_b').css('display','none');
+                $('#btn_unfold_reply_b').css('display','');
+                $('#btn_fold_reply_t').css('display','none');
+                $('#btn_unfold_reply_t').css('display','');
+            }else{
+                $('#btn_fold_reply_b').css('display','block');
+                $('#btn_unfold_reply_b').css('display','none');
+                $('#btn_fold_reply_t').css('display','block');
+                $('#btn_unfold_reply_t').css('display','none');
+            }
+            //$.cookie('THREAD_LIST_ORDER',$('#OCN').val(),{path:'/',expires:7})
+            if ($.cookie('THREAD_LIST_ORDER')=='post') {
+                $('#btn_reply_first_t').css('display','')
+                $('#btn_post_first_t').css('display','none')
+                $('#btn_reply_first_b').css('display','')
+                $('#btn_post_first_b').css('display','none')
+            }else{
+                $.cookie('THREAD_LIST_ORDER','reply',{path:'/',expires:7})
+                $('#btn_reply_first_t').css('display','none')
+                $('#btn_post_first_t').css('display','')
+                $('#btn_reply_first_b').css('display','none')
+                $('#btn_post_first_b').css('display','')
+            }
+        }
+        function fold_reply(){
+            $.cookie('FOLD_THREAD_REPLY','true',{path:"/",expires:7})
+            redraw_option_btns()
+            refresh_url_hash()
+        }
+        function unfold_reply(){
+            $.cookie('FOLD_THREAD_REPLY','false',{path:"/",expires:7})
+            redraw_option_btns()
+            refresh_url_hash()
+        }
+        function switch_order(new_order){
+            if (new_order=='post') {
+                $.cookie('THREAD_LIST_ORDER','post',{path:'/',expires:7})
+            }else{
+                $.cookie('THREAD_LIST_ORDER','reply',{path:'/',expires:7})
+            }
+            $("#Page_Num").val(1)
+            redraw_option_btns()
+            refresh_url_hash()
+        }
+        function change_page_size(new_size){
+            $('#Page_Size').val(new_size)
+            $('#span_page_size_t').html(new_size)
+            $('#span_page_size_b').html(new_size)
+            refresh_url_hash()
+        }
+
+        function goto_page(pageInput){
+            var maxPage=$('#Max_Page_Num').val();
+            var inputPage=$.trim($('#'+pageInput).val());
+            var curPage=$('#Page_Num');
+            var r = /^\+?[1-9][0-9]*$/;　　//判断是否为正整数
+            if(!r.test(inputPage)){
+                alert('输入非数字，请重新输入');
+                $('#'+pageInput).val('');
+                $('#'+pageInput).focus();
+                return;
+            }
+            if(inputPage>maxPage || inputPage<=0 ){
+                alert('必须大于0,小于等于'+maxPage);
+                $('#'+pageInput).val('');
+                $('#'+pageInput).focus();
+                return;
+            }
+            if(curPage==inputPage){
+                alert('您已经在第'+inputPage+'页了！');
+                $('#'+pageInput).val('');
+                $('#'+pageInput).focus();
+                return;
+            }
+            $("#Page_Num").val(inputPage)
+            refresh_url_hash()
+        }
+        var tag_timers=[]
+        function switch_target_tag(target_tag){
+            $("#Target_Tag_Id").val(target_tag)
+            $("#Page_Num").val(1)
+            $("#Page_Size").val(20)
+            for(tagti=0;tagti<tag_timers.length;tagti++){
+                window.clearInterval(tag_timers[tagti])
+            }
+            init_tag_div("T")
+            init_tag_div("B")
+            if(target_tag>0){
+                tag_timers[tag_timers.length]=window.setInterval("flashTag('Tag_span_"+target_tag+"_T')",500)
+                tag_timers[tag_timers.length]=window.setInterval("flashTag('Tag_span_"+target_tag+"_B')",500)
+                $("#Tag_span_"+target_tag+"_T").attr('onclick','clear_target_tag()')
+                t_title="点击取消对该标签的选择"
+                $("#Tag_span_"+target_tag+"_T").attr('title',t_title)
+                $("#Tag_span_"+target_tag+"_B").attr('onclick','clear_target_tag()')
+                $("#Tag_span_"+target_tag+"_B").attr('title',t_title)
+            }
+            refresh_url_hash()
+        }
+        //清除对标签的选择
+        function clear_target_tag(){
+            switch_target_tag(0)
+        }
+        function flashTag(tagSpanID){
+            var oldBgC=$('#'+tagSpanID).css('background-color');
+            var oldFtC=$('#'+tagSpanID).css('color');
+            $('#'+tagSpanID).css('background-color',oldFtC);
+            $('#'+tagSpanID).css('color',oldBgC);
+        }
+        function click_threads_page(event,old_page, page) {
+            var appElement = document.querySelector('[ng-controller=user_ctrl]');
+            //获取$scope变量
+            var $scope = angular.element(appElement).scope();
+            $scope.show_user_ip_list(20, page)
+        }
+        //根据选定的各种参数更高hash的值
+        function refresh_url_hash(){
+            var new_option=$('#Target_Tag_Id').val()+"_"+$.cookie('THREAD_LIST_ORDER')+"_"+$('#Page_Size').val()+"_"+$('#Page_Num').val()
+            window.location.hash="#"+new_option
+            window.scrollTo( 0, 0 );
+            refreshThreadListFo()
+        }
+        function chang_page_num(page_diff){
+            if(page_diff<0){
+                if($('#Page_Num').val()==1){
+                    return;
+                }else{
+                    old_page=parseInt($('#Page_Num').val())
+                    $('#Page_Num').val(old_page-1)
+                    return;
+                }
+            }else{
+                if($('#Page_Num').val()==max_page){
+                    return;
+                }else{
+                    old_page=parseInt($('#Page_Num').val())
+                    $('#Page_Num').val(old_page+1)
+                    return;
+                }
+            }
+        }
+    </script>
+</html>
+
