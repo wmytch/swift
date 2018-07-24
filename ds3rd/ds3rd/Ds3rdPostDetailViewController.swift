@@ -7,16 +7,42 @@
 //
 
 import UIKit
+import Alamofire
+import SwiftyJSON
+
 
 class Ds3rdPostDetailViewController: UITableViewController {
     var postID: String?
+    var postURL=URL(string:"http://www.dszh81.com/get_thread_content_ajax/1/4415/0/?r=0.8774493987605836")
+    
     
     @IBAction func closeDetail(_ sender: UIBarButtonItem) {
         self.dismiss(animated: true, completion: nil)
     }
+    
+    func getPostDetail(){
+        Alamofire.request(postURL!).responseString { response in
+//            print("Success: \(response.result.isSuccess)")
+//            print("Response Text: \(response.result.value ?? "鼎盛三院")")
+            if let postData = response.result.value?.data(using: .utf8, allowLossyConversion: false) {
+                if let post = try? JSON(data: postData){
+//                    for (_,subJson):(String, JSON) in post["Target_Thread"] {
+//                        // Do something you want
+//                        print("detail:\(post)")
+//                    }
+                    print("detail:\(post)")
+
+                }
+            }
+//            self.forumData.parsePages(from: response.result.value ?? "")
+//            self.tableView.reloadData()
+//            self.removeLoadingScreen()
+        }
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         print("postID:\(postID ?? "none")")
+        getPostDetail()
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 

@@ -16,13 +16,6 @@
 		0444A29C20974D7100424251 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0444A29B20974D7100424251 /* Assets.xcassets */; };
 		0444A29F20974D7100424251 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0444A29D20974D7100424251 /* LaunchScreen.storyboard */; };
 		046CE74A20F5F52300B853B3 /* Ds3rdPostDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046CE74920F5F52300B853B3 /* Ds3rdPostDetailViewController.swift */; };
-		048F7FE7209B3F35002C3705 /* Kanna.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048F7FE2209B3F34002C3705 /* Kanna.swift */; };
-		048F7FE8209B3F35002C3705 /* libxmlParserOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048F7FE3209B3F34002C3705 /* libxmlParserOption.swift */; };
-		048F7FE9209B3F35002C3705 /* libxmlHTMLDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048F7FE4209B3F35002C3705 /* libxmlHTMLDocument.swift */; };
-		048F7FEA209B3F35002C3705 /* libxmlHTMLNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048F7FE5209B3F35002C3705 /* libxmlHTMLNode.swift */; };
-		048F7FEB209B3F35002C3705 /* CSS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048F7FE6209B3F35002C3705 /* CSS.swift */; };
-		048F7FF2209B3F98002C3705 /* libxml2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 048F7FF0209B3F97002C3705 /* libxml2.tbd */; };
-		048F7FF3209B3F98002C3705 /* libxml2.2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 048F7FF1209B3F97002C3705 /* libxml2.2.tbd */; };
 		04BD4B1620B84C160001B97F /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04BD4B0920B84B550001B97F /* SwiftyJSON.framework */; };
 		04BD4B1720B84C160001B97F /* SwiftyJSON.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 04BD4B0920B84B550001B97F /* SwiftyJSON.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		04ED523220A348E90078D7E0 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04ED522520A348CE0078D7E0 /* Alamofire.framework */; };
@@ -178,8 +171,6 @@
 		048F7FE6209B3F35002C3705 /* CSS.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CSS.swift; path = "../../../Kanna-master/Sources/Kanna/CSS.swift"; sourceTree = "<group>"; };
 		048F7FED209B3F54002C3705 /* libxml2-kanna.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "libxml2-kanna.h"; sourceTree = "<group>"; };
 		048F7FEE209B3F54002C3705 /* module.modulemap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = "sourcecode.module-map"; path = module.modulemap; sourceTree = "<group>"; };
-		048F7FF0209B3F97002C3705 /* libxml2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libxml2.tbd; path = usr/lib/libxml2.tbd; sourceTree = SDKROOT; };
-		048F7FF1209B3F97002C3705 /* libxml2.2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libxml2.2.tbd; path = usr/lib/libxml2.2.tbd; sourceTree = SDKROOT; };
 		04BD4AF620B84B550001B97F /* SwiftyJSON.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SwiftyJSON.xcodeproj; path = "../../SwiftyJSON-master/SwiftyJSON.xcodeproj"; sourceTree = "<group>"; };
 		04ED521920A348CE0078D7E0 /* Alamofire.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Alamofire.xcodeproj; path = "Alamofire-master/Alamofire.xcodeproj"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -190,9 +181,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				04BD4B1620B84C160001B97F /* SwiftyJSON.framework in Frameworks */,
-				048F7FF2209B3F98002C3705 /* libxml2.tbd in Frameworks */,
 				04ED523220A348E90078D7E0 /* Alamofire.framework in Frameworks */,
-				048F7FF3209B3F98002C3705 /* libxml2.2.tbd in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -261,8 +250,6 @@
 		048F7FEF209B3F97002C3705 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				048F7FF1209B3F97002C3705 /* libxml2.2.tbd */,
-				048F7FF0209B3F97002C3705 /* libxml2.tbd */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -481,16 +468,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				040C215E20A0859F00756244 /* Ds3rdPost.swift in Sources */,
-				048F7FEA209B3F35002C3705 /* libxmlHTMLNode.swift in Sources */,
 				0444A29720974D6E00424251 /* DsForumViewController.swift in Sources */,
 				0404C19B20D294A900025EEF /* DszhViewController.swift in Sources */,
 				046CE74A20F5F52300B853B3 /* Ds3rdPostDetailViewController.swift in Sources */,
-				048F7FE8209B3F35002C3705 /* libxmlParserOption.swift in Sources */,
 				0444A29520974D6E00424251 /* AppDelegate.swift in Sources */,
 				040C216020A0869100756244 /* Ds3rdViewController.swift in Sources */,
-				048F7FEB209B3F35002C3705 /* CSS.swift in Sources */,
-				048F7FE9209B3F35002C3705 /* libxmlHTMLDocument.swift in Sources */,
-				048F7FE7209B3F35002C3705 /* Kanna.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
