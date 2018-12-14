@@ -8,8 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		0404C19B20D294A900025EEF /* DszhViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0404C19A20D294A900025EEF /* DszhViewController.swift */; };
+		040A4846211C631A00F08F0D /* PostDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040A4845211C631A00F08F0D /* PostDetailCell.swift */; };
 		040C215E20A0859F00756244 /* Ds3rdPost.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040C215D20A0859F00756244 /* Ds3rdPost.swift */; };
 		040C216020A0869100756244 /* Ds3rdViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040C215F20A0869100756244 /* Ds3rdViewController.swift */; };
+		0413DA402119C89200B5731A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0413DA3F2119C89100B5731A /* Images.xcassets */; };
 		0444A29520974D6E00424251 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0444A29420974D6E00424251 /* AppDelegate.swift */; };
 		0444A29720974D6E00424251 /* DsForumViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0444A29620974D6E00424251 /* DsForumViewController.swift */; };
 		0444A29A20974D6E00424251 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0444A29820974D6E00424251 /* Main.storyboard */; };
@@ -154,8 +156,10 @@
 
 /* Begin PBXFileReference section */
 		0404C19A20D294A900025EEF /* DszhViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DszhViewController.swift; sourceTree = "<group>"; };
+		040A4845211C631A00F08F0D /* PostDetailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailCell.swift; sourceTree = "<group>"; };
 		040C215D20A0859F00756244 /* Ds3rdPost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ds3rdPost.swift; sourceTree = "<group>"; };
 		040C215F20A0869100756244 /* Ds3rdViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ds3rdViewController.swift; sourceTree = "<group>"; };
+		0413DA3F2119C89100B5731A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		0444A29120974D6E00424251 /* ds3rd.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ds3rd.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0444A29420974D6E00424251 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0444A29620974D6E00424251 /* DsForumViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DsForumViewController.swift; sourceTree = "<group>"; };
@@ -221,6 +225,8 @@
 				040C215D20A0859F00756244 /* Ds3rdPost.swift */,
 				040C215F20A0869100756244 /* Ds3rdViewController.swift */,
 				0404C19A20D294A900025EEF /* DszhViewController.swift */,
+				0413DA3F2119C89100B5731A /* Images.xcassets */,
+				040A4845211C631A00F08F0D /* PostDetailCell.swift */,
 			);
 			path = ds3rd;
 			sourceTree = "<group>";
@@ -317,6 +323,7 @@
 				TargetAttributes = {
 					0444A29020974D6D00424251 = {
 						CreatedOnToolsVersion = 9.3;
+						LastSwiftMigration = 1000;
 					};
 				};
 			};
@@ -455,6 +462,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0444A29F20974D7100424251 /* LaunchScreen.storyboard in Resources */,
+				0413DA402119C89200B5731A /* Images.xcassets in Resources */,
 				0444A29C20974D7100424251 /* Assets.xcassets in Resources */,
 				0444A29A20974D6E00424251 /* Main.storyboard in Resources */,
 			);
@@ -471,6 +479,7 @@
 				0444A29720974D6E00424251 /* DsForumViewController.swift in Sources */,
 				0404C19B20D294A900025EEF /* DszhViewController.swift in Sources */,
 				046CE74A20F5F52300B853B3 /* Ds3rdPostDetailViewController.swift in Sources */,
+				040A4846211C631A00F08F0D /* PostDetailCell.swift in Sources */,
 				0444A29520974D6E00424251 /* AppDelegate.swift in Sources */,
 				040C216020A0869100756244 /* Ds3rdViewController.swift in Sources */,
 			);
@@ -631,11 +640,12 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "LaunchImage-1";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9EG298F8CJ;
 				HEADER_SEARCH_PATHS = "$(SDKROOT)/usr/include/libxml2";
 				INFOPLIST_FILE = ds3rd/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -643,7 +653,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = whg.ds3rd;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_INCLUDE_PATHS = "$(SRCROOT)/ds3rd/htmlParser/Modules/**";
-				SWIFT_VERSION = 4.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 1;
 				ccc = "";
 			};
@@ -655,11 +666,12 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "LaunchImage-1";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9EG298F8CJ;
 				HEADER_SEARCH_PATHS = "$(SDKROOT)/usr/include/libxml2";
 				INFOPLIST_FILE = ds3rd/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -667,7 +679,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = whg.ds3rd;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_INCLUDE_PATHS = "$(SRCROOT)/ds3rd/htmlParser/Modules/**";
-				SWIFT_VERSION = 4.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 1;
 				ccc = "";
 			};

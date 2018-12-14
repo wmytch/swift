@@ -27,7 +27,7 @@ class DsForumViewController: UITableViewController {
         self.loadingLabel.text = "Loading..."
         self.loadingLabel.frame = CGRect(x:0, y:0, width:140, height:40)
         
-        self.spinner.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.gray
+        self.spinner.style = UIActivityIndicatorView.Style.gray
         self.spinner.color=UIColor.red
         self.spinner.frame = CGRect(x:0, y:0, width:40, height:40)
         self.startLoadingScreen()

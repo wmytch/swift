@@ -10,8 +10,13 @@ import Foundation
 import SwiftyJSON
 
 class Ds3rdPost {
-    let ds3rdUrl=URL(string:"http://www.dszh81.com/list_forum_compact_threads_ajax/1/?pn=1&ps=50&OCN=reply&tid=0&r=0.5302122998083184")
-   
+    let ds3rdUrl=URL(string:"http://www.dszh81.com/list_forum_compact_threads_ajax/1/?pn=1&ps=50&OCN=reply&tid=0&r=0.53021220988082787632")
+    
+    struct PostSubject{
+        var postTitle=""
+        var postAuxTitle=""
+        var postID=""
+    }
     var postArray=[PostSubject]()
     
     func parsePages(from responseData : String){
@@ -24,7 +29,7 @@ class Ds3rdPost {
                 for (_,subJson):(String, JSON) in post["Thread_List"] {
                     // Do something you want
                     currentSubject.postTitle="\(subJson[6])"
-                    currentSubject.postAuxTitle="\(subJson [17])[\(subJson[10])]<\(subJson[16])> \(subJson[20])"
+                    currentSubject.postAuxTitle="\(subJson [17])  \(subJson[20]) [\(subJson[16])]"
                     currentSubject.postID="\(subJson[2])"
                     postArray.append(currentSubject)
                 }
@@ -63,11 +68,51 @@ class Ds3rdPost {
         "child_msgs": 26 // 回帖列表
     ]
     
-    struct PostSubject{
-        var postTitle=""
-        var postAuxTitle=""
-        var postID=""
+    
+}
+
+class Ds3rdPostDetail{
+    var postURL:URL?
+    struct PostDetail{
+        var detailTitle:String?
+        var detailContent:String?
+        var detailSubscriber:String?
+        var detailAddress:String?
+        var detailTimestamp:String?
     }
+    var detailArray=[PostDetail]()
+    
+    init(from postID:String){
+        postURL=URL(string:"http://www.dszh81.com/get_thread_content_ajax/1/"+postID+"/0/?r=0.8774493987605836")
+    }
+    
+    func parsePages(from responseData : String){
+        if responseData==""{
+            return
+        }
+        var currentDetail=PostDetail()
+//        if let postData = responseData.data(using: .utf8, allowLossyConversion: false) {
+            print("parsePages:\(String(describing: postURL!))")
+//            if let post = try? JSON(data: postData){
+//                for (_,subJson):(String, JSON) in post["Thread_List"] {
+                    // Do something you want
+                    currentDetail.detailTitle="\(String(describing: postURL!))"
+                    currentDetail.detailContent="帖子内容"
+                    currentDetail.detailSubscriber="mytch"
+                    currentDetail.detailTimestamp="2018-08-09 20:53:11"
+                    currentDetail.detailAddress="广州"
+                    detailArray.append(currentDetail)
+        currentDetail.detailTitle="\(String(describing: postURL!))"
+        currentDetail.detailContent="帖子内容：\(String(describing: postURL!))"
+        currentDetail.detailSubscriber="Mytch"
+        currentDetail.detailTimestamp="2018-08-09 20:53:11"
+        currentDetail.detailAddress="北京"
+        detailArray.append(currentDetail)
+//                }
+//            }
+ //       }
+    }
+    
 }
 //[
 //[1, "", 2571, 2571, "", true, "添加表情问题,你们希望加哪些表情 把图片放在跟帖里面吧。看情况添加", 0, 39, "/emojo/1/39.gif", "61.163.107.194", 1, "2018-05-10 17:17:59", "2018-05-10 17:17:59", "", 0, 11, "pickup", 29, 218, "2018-05-19 19:30:36", 0, 1, 0, 0, [],

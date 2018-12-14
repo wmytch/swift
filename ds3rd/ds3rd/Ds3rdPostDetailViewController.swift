@@ -11,45 +11,34 @@ import Alamofire
 import SwiftyJSON
 
 
-class Ds3rdPostDetailViewController: UITableViewController {
+class Ds3rdPostDetailViewController: DsForumViewController {
     var postID: String?
-    var postURL=URL(string:"http://www.dszh81.com/get_thread_content_ajax/1/4415/0/?r=0.8774493987605836")
-    
-    
+//    lazy var postURL=URL(string:"http://www.dszh81.com/get_thread_content_ajax/1/"+self.postID!+"4415/0/?r=0.8774493987605836")
+    lazy var postDetail = Ds3rdPostDetail(from: postID!)
     @IBAction func closeDetail(_ sender: UIBarButtonItem) {
         self.dismiss(animated: true, completion: nil)
     }
     
-    func getPostDetail(){
-        Alamofire.request(postURL!).responseString { response in
-//            print("Success: \(response.result.isSuccess)")
-//            print("Response Text: \(response.result.value ?? "鼎盛三院")")
-            if let postData = response.result.value?.data(using: .utf8, allowLossyConversion: false) {
-                if let post = try? JSON(data: postData){
-//                    for (_,subJson):(String, JSON) in post["Target_Thread"] {
-//                        // Do something you want
-//                        print("detail:\(post)")
-//                    }
-                    print("detail:\(post)")
-
-                }
-            }
-//            self.forumData.parsePages(from: response.result.value ?? "")
-//            self.tableView.reloadData()
-//            self.removeLoadingScreen()
-        }
-    }
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("postID:\(postID ?? "none")")
-        getPostDetail()
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        self.setLoadingScreen()
+        self.postDetail.parsePages(from: "aa")
+       // getPostDetail()
     }
-
+    
+    func getPostDetail(){
+//        postDetail=Ds3rdPostDetail(from : postID!)
+        print("url:\(String(describing: postDetail.postURL!))")
+        Alamofire.request((postDetail.postURL!)).responseString { response in
+            print("Success: \(response.result.isSuccess)")
+//            print("Response Text: \(response.result.value ?? "鼎盛三院")")
+            
+            self.postDetail.parsePages(from: response.result.value ?? "")
+            self.tableView.reloadData()
+            self.removeLoadingScreen()
+        }
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -59,23 +48,25 @@ class Ds3rdPostDetailViewController: UITableViewController {
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        return postDetail.detailArray.count
     }
 
-    /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
-        // Configure the cell...
+        let cell=tableView.dequeueReusableCell(withIdentifier: "ds3rdPostDetailCell",for : indexPath) as! PostDetailCell
+        cell.Title?.text=self.postDetail.detailArray[indexPath.row].detailTitle
+        cell.Content?.text=self.postDetail.detailArray[indexPath.row].detailContent
+        cell.Subscriber?.text=self.postDetail.detailArray[indexPath.row].detailSubscriber
+        cell.Address?.text=self.postDetail.detailArray[indexPath.row].detailAddress
+        cell.Timestamp?.text=self.postDetail.detailArray[indexPath.row].detailTimestamp
+        
 
         return cell
     }
-    */
 
     /*
     // Override to support conditional editing of the table view.
